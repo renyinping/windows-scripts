@@ -1,4 +1,4 @@
-@echo off
+::@echo off
 set OLD_DIR=%CD%
 cd %~dp0
 echo %CD%
@@ -16,10 +16,10 @@ for /f "eol=; tokens=1-4 delims=," %%a in (%CFG_FILE%) do (
 )
 echo 找不到快捷应用:%APP_NAME%
 echo 赶紧去添加一个
-
 ::任意键退出
 pause > nul
 goto :quit
+
 
 ::启动应用软件函数
 ::EXE_NAME 可执行文件名
@@ -35,7 +35,7 @@ goto :quit
 	@echo on
 	start /B "%APP_NOTE%" "%EXE_NAME%"
 	@echo off
-	goto :quit
+	goto :eof
 
 :quit
 	cd %OLD_DIR%

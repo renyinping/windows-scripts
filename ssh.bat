@@ -28,6 +28,7 @@ echo 赶紧去添加一个
 pause > nul
 goto :quit
 
+
 ::连接函数
 ::HOST 主机host或ip
 ::PORT 端口
@@ -46,7 +47,7 @@ goto :quit
 	@echo on
 	start /B putty.exe -ssh %SSH_VER% %USER%%HOST% %PASSWD% %PORT%
 	@echo off
-	goto :quit
+	goto :eof
 
 :scp_conn
 	if     "%~1" == "" echo 缺少主机信息 & pause > nul & goto :quit
@@ -59,7 +60,7 @@ goto :quit
 	@echo on
 	start /B winscp.exe %SCP_PROTO%%USER%%HOST%%PORT%
 	@echo off
-	goto :quit
+	goto :eof
 
 :quit
 	cd %OLD_DIR%
