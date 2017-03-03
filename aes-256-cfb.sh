@@ -29,6 +29,7 @@ fi
 if test ! -f "password.txt"
 then
 	print_red "File not found: password.txt"
+	exit 2
 fi
 
 PWD=`cat password.txt`
@@ -44,12 +45,14 @@ then
 		openssl enc -${ENC} -d -salt -in "$i" -out "${i%.*}.temp" -pass "pass:${PWD}"
 		print_green "File decryption completed: ${i%.*}.temp"
 	done
-	exit 0
 fi
 
 # º”√‹
-for i in `ls *.conf`
-do
-	openssl enc -${ENC} -e -salt -in "$i" -out "$i.${ENC}" -pass "pass:${PWD}"
-	print_green "File encryption completed: $i.${ENC}"
-done
+if test -z "$*"
+then
+	for i in `ls *.conf`
+	do
+		openssl enc -${ENC} -e -salt -in "$i" -out "$i.${ENC}" -pass "pass:${PWD}"
+		print_green "File encryption completed: $i.${ENC}"
+	done
+fi
