@@ -31,7 +31,7 @@ goto :quit
 	set APP_NOTE=%~3
 	set PATH=%APP_PATH%;%PATH%
 	::生成快捷启动文件
-	echo qs.bat %%~n0 > %APP_NAME%.bat
+	echo qs.bat %%~n0 > qs\%APP_NAME%.bat
 	@echo on
 	start /B "%APP_NOTE%" "%EXE_NAME%"
 	@echo off

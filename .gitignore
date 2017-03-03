@@ -1,8 +1,14 @@
-*
 !.gitignore
+
 !qs.bat
 !qs.conf
+qs/
+
 !ssh.bat
+ssh.conf
+scp.bat
+
+!ser.bat
 
 !fix-winre.bat
 !nfs.bat
